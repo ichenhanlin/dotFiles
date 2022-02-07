@@ -1,0 +1,208 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/chenhanlin/.oh-my-zsh"
+export TERM="xterm-256color"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+#ZSH_THEME="agnoster"
+POWERLEVEL9K_MODE="nerdfont-complete"
+
+#POWERLEVEL9K_BATTERY_LOW_BACKGROUND='red'
+#POWERLEVEL9K_BATTERY_CHARGING_BACKGROUND='green'
+#POWERLEVEL9K_BATTERY_CHARGED_BACKGROUND='blue'
+#POWERLEVEL9K_BATTERY_DISCONNECTED_BACKGROUND='blue'
+#POWERLEVEL9K_BATTERY_LOW_FOREGROUND='black'
+#POWERLEVEL9K_BATTERY_CHARGING_FOREGROUND='black'
+#POWERLEVEL9K_BATTERY_CHARGED_FOREGROUND='black'
+#POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='black'
+#POWERLEVEL9K_BATTERY_ICON='\uf1e6 '
+#POWERLEVEL9K_VI_INSERT_MODE_STRING=''
+POWERLEVEL9K_SHOW_CHANGESET=true
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon battery dir vcs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(vi_mode status root_indicator background_jobs history time)
+source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
+#ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+git
+#zsh-autosuggestions
+#vi-mode
+#zsh-syntax-highlighting
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# 选项设置{{{1
+DEFAULT_USER=$USER
+unsetopt beep
+# 不需要打 cd，直接进入目录
+setopt autocd
+# 自动记住已访问目录栈
+setopt auto_pushd
+setopt pushd_ignore_dups
+setopt pushd_minus
+# rm * 时不要提示
+setopt rm_star_silent
+# 允许在交互模式中使用注释
+setopt interactive_comments
+# disown 后自动继续进程
+setopt auto_continue
+setopt extended_glob
+# 单引号中的 '' 表示一个 ' （如同 Vimscript 中者）
+setopt rc_quotes
+# 补全列表不同列可以使用不同的列宽
+setopt listpacked
+# 补全 identifier=path 形式的参数
+setopt magic_equal_subst
+# 为方便复制，右边的提示符只在最新的提示符上显示
+setopt transient_rprompt
+# setopt 的输出显示选项的开关状态
+setopt ksh_option_print
+setopt no_bg_nice
+setopt noflowcontrol
+stty -ixon # 上一行在 tmux 中不起作用
+#}}}
+# 历史记录{{{1
+# 不保存重复的历史记录项
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+# setopt hist_ignore_all_dups
+# 在命令前添加空格，不将此命令添加到记录文件中
+setopt hist_ignore_space
+#}}}
+# 替换{{{1
+alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7891"
+alias rproxy="export https_proxy=socks5://192.168.1.1:1080 http_proxy=socks5://192.168.1.1:1080 all_proxy=socks5://192.168.1.1:1080"
+alias unproxy="unset http_proxy;unset https_proxy;unset all_proxy"
+alias vim="nvim"
+alias vi="nvim"
+# }}}
+# Plugin{{{1
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=5'
+
+# Esc-Esc 在当前/上一条命令前插入 sudo
+sudo-command-line() {
+    [[ -z $BUFFER ]] && zle up-history
+    [[ $BUFFER != sudo\ * && $UID -ne 0 ]] && {
+      typeset -a bufs
+      bufs=(${(z)BUFFER})
+      while (( $+aliases[$bufs[1]] )); do
+        local expanded=(${(z)aliases[$bufs[1]]})
+        bufs[1,1]=($expanded)
+        if [[ $bufs[1] == $expanded[1] ]]; then
+          break
+        fi
+      done
+      bufs=(sudo $bufs)
+      BUFFER=$bufs
+    }
+    zle end-of-line
+}
+zle -N sudo-command-line
+bindkey "\e\e" sudo-command-line
+#}}}
+# Export {{{1
+# export GOPATH=/Users/chenhanlin/Code/go
+# export GOBIN=$GOPATH/bin
+# export PATH=$PATH:$GOBIN
+export JAVA_HOME=/usr/local/Cellar/openjdk@8/1.8.0+282
+export SPARK_HOME=/Users/chenhanlin/workstation/apps/spark/spark-3.0.1-bin-hadoop2.7
+export PYTHONPATH=$SPARK_HOME/python:$SPARK_HOME/python/lib/py4j-0.10.4-src.zip:$PYTHONPATH
+export PYSPARK_PYTHON=python3
+export PATH=$SPARK_HOME/bin:$PATH
+export GOPATH=/Users/chenhanlin/workstation/code/golang
+# }}}
+
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# vim:fdm=marker
