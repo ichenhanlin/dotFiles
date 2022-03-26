@@ -1,21 +1,22 @@
 scriptencoding utf-8
 
 " init vim-plug for first time start
-let vimplug_exists=expand('~/.local/share/nvim/site/autoload/plug.vim')
-
-if !filereadable(vimplug_exists)
-  if !executable("curl")
-    echoerr "You have to install curl or first install vim-plug yourself!"
-    execute "q!"
-  endif
-  echo "Installing Vim-Plug..."
-  echo ""
-  silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-  autocmd VimEnter * PlugInstall
-endif
+" let vimplug_exists=expand('~/.local/share/nvim/site/autoload/plug.vim')
+" 
+" if !filereadable(vimplug_exists)
+"   if !executable("curl")
+"     echoerr "You have to install curl or first install vim-plug yourself!"
+"     execute "q!"
+"   endif
+"   echo "Installing Vim-Plug..."
+"   echo ""
+"   silent exec "!\curl -fLo " . vimplug_exists . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+"   autocmd VimEnter * PlugInstall
+" endif
 
 " Plugin manager
 call plug#begin('~/.local/share/nvim/plugged')
+" call plug#begin()
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 
@@ -37,7 +38,6 @@ Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
-Plug 'tzachar/cmp-tabnine', { 'do': './install.sh' }
 Plug 'onsails/lspkind-nvim'
 
 " For vsnip users.

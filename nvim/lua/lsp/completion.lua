@@ -3,18 +3,18 @@ local luasnip = require 'luasnip'
 require("luasnip.loaders.from_vscode").lazy_load()
 
 -- TabNine Setup
-local tabnine = require('cmp_tabnine.config')
-tabnine:setup({
-	max_lines = 1000;
-	max_num_results = 20;
-	sort = true;
-	run_on_every_keystroke = true;
-	snippet_placeholder = '..';
-	ignored_file_types = { -- default is not to ignore
-		-- uncomment to ignore in lua:
-		-- lua = true
-	};
-})
+-- local tabnine = require('cmp_tabnine.config')
+-- tabnine:setup({
+-- 	max_lines = 1000;
+-- 	max_num_results = 20;
+-- 	sort = true;
+-- 	run_on_every_keystroke = true;
+-- 	snippet_placeholder = '..';
+-- 	ignored_file_types = { -- default is not to ignore
+-- 		-- uncomment to ignore in lua:
+-- 		-- lua = true
+-- 	};
+-- })
 
 local lspkind = require('lspkind')
 
@@ -22,7 +22,7 @@ local source_mapping = {
 	buffer = "[Buffer]",
 	nvim_lsp = "[LSP]",
 	nvim_lua = "[Lua]",
-	cmp_tabnine = "[TN]",
+	-- cmp_tabnine = "[TN]",
 	path = "[Path]",
     luasnip = "[SNIP]",
 }
@@ -72,7 +72,7 @@ cmp.setup {
       { name = 'luasnip' }, -- For luasnip users.
       -- { name = 'ultisnips' }, -- For ultisnips users.
       -- { name = 'snippy' }, -- For snippy users.
-      { name = 'cmp_tabnine' },
+      -- { name = 'cmp_tabnine' },
       { name = 'buffer' },
       { name = 'path' },
   },
