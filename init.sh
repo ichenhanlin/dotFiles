@@ -38,7 +38,7 @@ install(){
     fi
 }
 
-zhsInstall(){
+zshInstall(){
     mkdir -p ~/.config/zsh
     export RUNZSH=no
     yes | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -i
@@ -50,6 +50,7 @@ alias vim="nvim"
 alias vi="nvim"
 source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+export EDITOR=/usr/local/bin/nvim
 EOF
 }
 
@@ -79,8 +80,8 @@ goInstall(){
 
     cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
 export GOPATH=${HOME}/workspace/golang
-export GOBIN=${GOPATH}/bin
-export PATH=${PATH}:${GOBIN}
+export GOBIN=\${GOPATH}/bin
+export PATH=\$PATH:\$GOBIN
 EOF
 
     # install gopls
@@ -94,7 +95,7 @@ if [ $OS == "Unspported OS" ]; then
     exit 1
 fi
 install
-zhsInstall
+zshInstall
 neovimInstall
 goInstall
 
