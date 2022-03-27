@@ -15,8 +15,8 @@ scriptencoding utf-8
 " endif
 
 " Plugin manager
-call plug#begin('~/.local/share/nvim/plugged')
-" call plug#begin()
+" call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin()
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 
