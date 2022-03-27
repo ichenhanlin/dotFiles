@@ -83,10 +83,9 @@ goInstall(){
     mkdir -p ${HOME}/workspace/golang
 
     cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
-export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/workspace/golang
 export GOBIN=\${GOPATH}/bin
-export PATH=\$PATH:\$GOBIN
+export PATH=\$PATH:\$GOBIN:/usr/local/go/bin
 export GO111MODULE=on
 EOF
 
