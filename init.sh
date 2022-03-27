@@ -72,22 +72,26 @@ function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)"
 goInstall(){
     if [ $OS == "mac" ]; then
         brew install golang
-    elif [ $OS == "ubuntu" ]; then
-        sudo apt-get install -y golang
-    elif [ $OS == "centos" ]; then
-        sudo yum install -y golang
+    #elif [ $OS == "ubuntu" ]; then
+    #    sudo apt-get install -y golang
+    #elif [ $OS == "centos" ]; then
+    #    sudo yum install -y golang
+    else
+        sudo rm -rf /usr/local/go && curl -L https://go.dev/dl/go1.18.linux-amd64.tar.gz | sudo tar -xz -C /usr/local
     fi
 
     mkdir -p ${HOME}/workspace/golang
 
     cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
-export GO111MODULE=on
+export PATH=$PATH:/usr/local/go/bin
 export GOPATH=${HOME}/workspace/golang
 export GOBIN=\${GOPATH}/bin
 export PATH=\$PATH:\$GOBIN
+export GO111MODULE=on
 EOF
 
     # install gopls
+    export PATH=$PATH:/usr/local/go/bin
     export GOPATH=${HOME}/workspace/golang 
     export GO111MODULE=on
 
