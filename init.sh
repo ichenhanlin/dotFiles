@@ -67,6 +67,8 @@ neovimInstall(){
     ln -s ${HOME}/dotFiles/nvim ${HOME}/.config/nvim
 }
 
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
+
 goInstall(){
     if [ $OS == "mac" ]; then
         brew install golang
@@ -87,7 +89,16 @@ EOF
 
     # install gopls
     export GOPATH=${HOME}/workspace/golang 
-    go get golang.org/x/tools/gopls
+    export GO111MODULE=on
+
+    # compare go version
+    goVersion=`go version | awk ‘{print $3}’`
+    goVersion=${goVersion:2:${#goVersion}}
+    if version_ge $goVersion ‘1.16.0’; then
+        go install golang.org/x/tools/gopls@latest
+    else
+        go install golang.org/x/tools/gopls
+    fi
 }
 
 OS=`getOS`
