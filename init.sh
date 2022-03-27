@@ -41,7 +41,7 @@ install(){
 zshInstall(){
     mkdir -p ~/.config/zsh
     export RUNZSH=no
-    yes | sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" -i
+    sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
 
@@ -56,8 +56,8 @@ EOF
 
 neovimInstall(){
     # install vim-plug
-    sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    # sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    #  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
     # packer.vim
     # git clone --depth 1 https://github.com/wbthomason/packer.nvim\
