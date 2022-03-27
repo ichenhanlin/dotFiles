@@ -98,7 +98,7 @@ EOF
     # compare go version
     goVersion=`go version | awk '{print $3}'`
     goVersion=${goVersion:2:${#goVersion}}
-    if version_ge $goVersion ‘1.16.0’; then
+    if version_ge $goVersion '1.16.0'; then
         go install golang.org/x/tools/gopls@latest
     else
         go install golang.org/x/tools/gopls
