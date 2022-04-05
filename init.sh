@@ -42,15 +42,14 @@ zshInstall(){
     mkdir -p ~/.config/zsh
     export RUNZSH=no
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.config/zsh/zsh-syntax-highlighting
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.config/zsh/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.local/share/zsh/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.local/share/zsh/zsh-autosuggestions
 
     cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
 alias vim="nvim"
 alias vi="nvim"
-source ~/.config/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.config/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-export EDITOR=/usr/local/bin/nvim
+source \$HOME/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source \$HOME/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 EOF
 }
 
@@ -67,7 +66,7 @@ neovimInstall(){
     ln -s ${HOME}/dotFiles/nvim ${HOME}/.config/nvim
 }
 
-function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
+version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
 
 goInstall(){
     if [ $OS == "mac" ]; then
@@ -78,7 +77,6 @@ goInstall(){
     #    sudo yum install -y golang
     else
         sudo rm -rf /usr/local/go && curl -L https://go.dev/dl/go1.18.linux-amd64.tar.gz | sudo tar -xz -C /usr/local
-        export PATH=$PATH:/usr/local/go/bin
         echo "export PATH=\$PATH:/usr/local/go/bin" >> ${ZDOTDIR:-$HOME}/.zshrc
     fi
 
@@ -91,19 +89,50 @@ export PATH=\$PATH:\$GOBIN
 export GO111MODULE=on
 EOF
 
-    # install gopls
+    # # install gopls
 
-    export GOPATH=${HOME}/workspace/golang 
-    export GO111MODULE=on
+    # export GOPATH=${HOME}/workspace/golang 
+    # export GO111MODULE=on
 
-    # compare go version
-    goVersion=`go version | awk '{print $3}'`
-    goVersion=${goVersion:2:${#goVersion}}
-    if version_ge $goVersion '1.16.0'; then
-        go install golang.org/x/tools/gopls@latest
-    else
-        go install golang.org/x/tools/gopls
+    # # compare go version
+    # goVersion=`go version | awk '{print $3}'`
+    # goVersion=${goVersion:2:${#goVersion}}
+    # if version_ge $goVersion '1.16.0'; then
+    #     go install golang.org/x/tools/gopls@latest
+    # else
+    #     go install golang.org/x/tools/gopls
+    # fi
+}
+
+javaInstall(){
+    if [ $OS == "mac" ]; then
+        brew install openjdk@8 
+    elif [ $OS == "ubuntu" ]; then
+        sudo apt-get install -y openjdk-8-jdk openjdk-11-jdk
+        # switch to jdk-8 default
+        sudo update-alternatives --config java
+        sudo update-alternatives --config javac
+        sudo mkdir /usr/local/java/
+        sudo ln -s /usr/lib/jvm/java-8-openjdk-amd64 /usr/local/java/java-8 
+        sudo ln -s /usr/lib/jvm/java-11-openjdk-amd64 /usr/local/java/java-11 
+    elif [ $OS == "centos" ]; then
+        sudo yum install -y golang
     fi
+
+    sudo mkdir -p $HOME/.local/share/jdtls
+    curl -L https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz | sudo tar -xz -C ${HOME}/.local/share/jdtls
+
+    cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
+alias changeJava='sudo update-alternatives --config java'
+alias changeJavac='sudo update-alternatives --config javac'
+alias changeJshell='sudo update-alternatives --config jshell'
+export JAVA_HOME8=/usr/local/java/java-8
+export JAVA_HOME11=/usr/local/java/java-11
+export JAVA_HOME=\$JAVA_HOME8
+export PATH=\$PATH:\$HOME/.local/share/jdtls/bin
+EOF
+
+
 }
 
 OS=`getOS`
@@ -115,5 +144,6 @@ install
 zshInstall
 neovimInstall
 goInstall
+javaInstall
 
 exec zsh -l

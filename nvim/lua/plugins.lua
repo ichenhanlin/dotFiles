@@ -50,6 +50,9 @@ return require('packer').startup(function()
         'buoto/gotests-vim', 
         ft = {'go'}
     }
+     
+    -- For java
+    use 'mfussenegger/nvim-jdtls'
 
     -- Telescope.nvim
     use 'nvim-lua/plenary.nvim'

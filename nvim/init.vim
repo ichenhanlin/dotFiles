@@ -35,6 +35,7 @@ nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
 nnoremap <F5> :UndotreeToggle<CR>
+nnoremap <F6> :SymbolsOutline<CR>
 
 augroup highlight_yank
     autocmd!

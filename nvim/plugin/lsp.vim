@@ -2,7 +2,7 @@
 " nnoremap <leader>gi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <leader>gsh :lua vim.lsp.buf.signature_help()<CR>
 " nnoremap <leader>grs :lua vim.lsp.buf.references()<CR>
-nnoremap <leader>gca :lua vim.lsp.buf.code_action()<CR>
+nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>gh :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>ge :lua vim.diagnostic.open_float()<CR>
 
