@@ -105,14 +105,19 @@ EOF
 }
 
 javaInstall(){
+    sudo mkdir /usr/local/java/
     if [ $OS == "mac" ]; then
-        brew install openjdk@8 
+        brew install openjdk@8 openjdk@11
+	sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+	sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk
+	sudo ln -sfn /usr/local/opt/openjdk@11 /usr/local/java/java-11
+	sudo ln -sfn /usr/local/opt/openjdk@8 /usr/local/java/java-8
     elif [ $OS == "ubuntu" ]; then
         sudo apt-get install -y openjdk-8-jdk openjdk-11-jdk
         # switch to jdk-8 default
         sudo update-alternatives --config java
         sudo update-alternatives --config javac
-        sudo mkdir /usr/local/java/
+        
         sudo ln -s /usr/lib/jvm/java-8-openjdk-amd64 /usr/local/java/java-8 
         sudo ln -s /usr/lib/jvm/java-11-openjdk-amd64 /usr/local/java/java-11 
     elif [ $OS == "centos" ]; then
@@ -120,18 +125,14 @@ javaInstall(){
     fi
 
     sudo mkdir -p $HOME/.local/share/jdtls
-    curl -L https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz | sudo tar -xz -C ${HOME}/.local/share/jdtls
+    curl -L https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz | tar -xz -C ${HOME}/.local/share/jdtls
 
     cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
-alias changeJava='sudo update-alternatives --config java'
-alias changeJavac='sudo update-alternatives --config javac'
-alias changeJshell='sudo update-alternatives --config jshell'
 export JAVA_HOME8=/usr/local/java/java-8
 export JAVA_HOME11=/usr/local/java/java-11
 export JAVA_HOME=\$JAVA_HOME8
-export PATH=\$PATH:\$HOME/.local/share/jdtls/bin
+export PATH=\$PATH:\$HOME/.local/share/jdtls/bin:\$JAVA_HOME/bin
 EOF
-
 
 }
 
