@@ -23,7 +23,7 @@ install(){
         sudo apt-get install -y zsh ripgrep curl build-essential
     elif [ $OS == "centos" ]; then
         sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-        sudo yum install -y zsh ripgrep curl build-essential
+        sudo yum install -y zsh ripgrep curl
     fi
 
     # require neovim >= 0.61
@@ -121,10 +121,16 @@ javaInstall(){
         sudo ln -s /usr/lib/jvm/java-8-openjdk-amd64 /usr/local/java/java-8 
         sudo ln -s /usr/lib/jvm/java-11-openjdk-amd64 /usr/local/java/java-11 
     elif [ $OS == "centos" ]; then
-        sudo yum install -y golang
+        sudo yum install -y java-1.8.0-openjdk-devel java-11-openjdk-devel
+        # switch to jdk-8 default
+        sudo update-alternatives --config java
+        sudo update-alternatives --config javac
+        
+        sudo ln -s /usr/lib/jvm/java-1.8.0-openjdk-* /usr/local/java/java-8 
+        sudo ln -s /usr/lib/jvm/java-11-openjdk-* /usr/local/java/java-11 
     fi
 
-    sudo mkdir -p $HOME/.local/share/jdtls
+    mkdir -p $HOME/.local/share/jdtls
     curl -L https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz | tar -xz -C ${HOME}/.local/share/jdtls
 
     cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
