@@ -141,6 +141,14 @@ export PATH=\$PATH:\$HOME/.local/share/jdtls/bin:\$JAVA_HOME/bin
 EOF
 
 }
+pythonInstall(){
+    if [ $OS == "mac" ]; then
+    elif [ $OS == "ubuntu" ]; then
+        sudo apt install python3 python3-pip
+    elif [ $OS == "centos" ]; then
+    fi
+    pip3 install 'python-lsp-server[all]'
+}
 
 OS=`getOS`
 if [ $OS == "Unspported OS" ]; then
@@ -152,5 +160,6 @@ zshInstall
 neovimInstall
 goInstall
 javaInstall
+pythonInstall
 
 exec zsh -l
