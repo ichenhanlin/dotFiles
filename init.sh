@@ -143,9 +143,11 @@ EOF
 }
 pythonInstall(){
     if [ $OS == "mac" ]; then
+        brew install python3 python3-pip
     elif [ $OS == "ubuntu" ]; then
-        sudo apt install python3 python3-pip
+        sudo apt install -y python3 python3-pip python3-dev
     elif [ $OS == "centos" ]; then
+        sudo yum install -y python3 python3-pip python3-devel
     fi
     pip3 install 'python-lsp-server[all]'
 }
