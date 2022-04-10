@@ -23,7 +23,7 @@ install(){
         sudo apt-get install -y zsh ripgrep curl build-essential
     elif [ $OS == "centos" ]; then
         sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-        sudo yum install -y zsh ripgrep curl
+        sudo yum install -y zsh ripgrep curl util-linux-user
     fi
 
     # require neovim >= 0.61
