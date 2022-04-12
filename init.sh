@@ -19,15 +19,15 @@ getOS(){
 }
 
 install(){
-    if [ $OS == "ubuntu" ]; then
+    if [[ $OS == "ubuntu" ]]; then
         sudo apt-get install -y zsh ripgrep curl build-essential
-    elif [ $OS == "centos" ]; then
+    elif [[ $OS == "centos" ]]; then
         sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
         sudo yum install -y zsh ripgrep curl util-linux-user
     fi
 
     # require neovim >= 0.61
-    if [ $OS == 'mac' ]; then
+    if [[ $OS == 'mac' ]]; then
         # homebrew will install latest version
         brew install neovim ripgrep
     else
@@ -69,7 +69,7 @@ neovimInstall(){
 version_ge() { test "$(echo "$@" | tr " " "\n" | sort -rV | head -n 1)" == "$1"; }
 
 goInstall(){
-    if [ $OS == "mac" ]; then
+    if [[ $OS == "mac" ]]; then
         brew install golang
     #elif [ $OS == "ubuntu" ]; then
     #    sudo apt-get install -y golang
@@ -106,13 +106,13 @@ EOF
 
 javaInstall(){
     sudo mkdir /usr/local/java/
-    if [ $OS == "mac" ]; then
+    if [[ $OS == "mac" ]]; then
         brew install openjdk@8 openjdk@11
 	sudo ln -sfn /usr/local/opt/openjdk@11/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 	sudo ln -sfn /usr/local/opt/openjdk@8/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-8.jdk
 	sudo ln -sfn /usr/local/opt/openjdk@11 /usr/local/java/java-11
 	sudo ln -sfn /usr/local/opt/openjdk@8 /usr/local/java/java-8
-    elif [ $OS == "ubuntu" ]; then
+    elif [[ $OS == "ubuntu" ]]; then
         sudo apt-get install -y openjdk-8-jdk openjdk-11-jdk
         # switch to jdk-8 default
         sudo update-alternatives --config java
@@ -120,7 +120,7 @@ javaInstall(){
         
         sudo ln -s /usr/lib/jvm/java-8-openjdk-amd64 /usr/local/java/java-8 
         sudo ln -s /usr/lib/jvm/java-11-openjdk-amd64 /usr/local/java/java-11 
-    elif [ $OS == "centos" ]; then
+    elif [[ $OS == "centos" ]]; then
         sudo yum install -y java-1.8.0-openjdk-devel java-11-openjdk-devel
         # switch to jdk-8 default
         sudo update-alternatives --config java
@@ -142,11 +142,11 @@ EOF
 
 }
 pythonInstall(){
-    if [ $OS == "mac" ]; then
+    if [[ $OS == "mac" ]]; then
         brew install python3 python3-pip
-    elif [ $OS == "ubuntu" ]; then
+    elif [[ $OS == "ubuntu" ]]; then
         sudo apt install -y python3 python3-pip python3-dev
-    elif [ $OS == "centos" ]; then
+    elif [[ $OS == "centos" ]]; then
         sudo yum install -y python3 python3-pip python3-devel
     fi
     pip3 install 'python-lsp-server[all]'
