@@ -68,7 +68,20 @@ local config = {
                     path="/usr/local/java/java-8"
                 },
             }
-        }
+        };
+        contentProvider = { preferred = 'fernflower' };
+        signatureHelp = { enabled = true };
+        sources = {
+            organizeImports = {
+                starThreshold = 9999;
+                staticStarThreshold = 9999;
+            };
+        };
+        codeGeneration = {
+            toString = {
+                template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+            }
+        };
     }
   },
 
