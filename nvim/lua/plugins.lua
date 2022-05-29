@@ -24,7 +24,10 @@ return require('packer').startup(function()
     use 'lukas-reineke/indent-blankline.nvim'
 
     -- LSP Support
-    use 'neovim/nvim-lspconfig'
+    use {
+        'williamboman/nvim-lsp-installer',
+        'neovim/nvim-lspconfig'
+    }
 
     -- nvim-cmp
     use 'hrsh7th/cmp-nvim-lsp'
@@ -52,7 +55,7 @@ return require('packer').startup(function()
     }
      
     -- For java
-    use 'mfussenegger/nvim-jdtls'
+    -- use 'mfussenegger/nvim-jdtls'
 
     -- Telescope.nvim
     use 'nvim-lua/plenary.nvim'
