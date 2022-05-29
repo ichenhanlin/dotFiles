@@ -45,7 +45,7 @@ return require('packer').startup(function()
 
     -- For Golang
     use {
-        'fatih/vim-go', 
+        'crispgm/nvim-go', 
         run = ':GoUpdateBinaries', 
         ft = {'go'} 
     }
