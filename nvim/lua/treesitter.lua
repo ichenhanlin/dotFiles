@@ -1,7 +1,7 @@
 require'nvim-treesitter.configs'.setup {
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = {"vim", "go", "lua", "bash", "java", "gomod", "gowork", "json", "python", "yaml"},
+  ensure_installed = {"vim", "go", "lua", "bash", "java", "gomod", "gowork", "json", "python", "yaml", "proto"},
   -- 启用代码高亮功能
   highlight = {
     enable = true,

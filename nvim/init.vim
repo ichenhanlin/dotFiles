@@ -6,6 +6,7 @@ lua require("statusline")
 lua require("treesitter")
 lua require("mytelescope")
 lua require("symbol-outline")
+lua require("myExplore")
 
 let mapleader=" "
 " ctrl-s 保存文件
@@ -34,6 +35,7 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+nnoremap <F4> :NvimTreeFindFileToggle<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 nnoremap <F6> :SymbolsOutline<CR>
 
