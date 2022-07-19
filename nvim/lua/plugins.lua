@@ -46,12 +46,10 @@ return require('packer').startup(function()
     -- For Golang
     use {
         'crispgm/nvim-go', 
-        run = ':GoUpdateBinaries', 
-        ft = {'go'} 
+        run = ':GoUpdateBinaries'
     }
     use {
-        'buoto/gotests-vim', 
-        ft = {'go'}
+        'buoto/gotests-vim'
     }
      
     -- For java
@@ -79,6 +77,11 @@ return require('packer').startup(function()
             'kyazdani42/nvim-web-devicons', -- optional, for file icons
         }
     }
+
+    -- Terminal
+    use {"akinsho/toggleterm.nvim", tag = 'v2.*', config = function()
+        require("toggleterm").setup()
+    end}
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

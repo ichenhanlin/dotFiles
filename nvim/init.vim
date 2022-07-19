@@ -35,6 +35,10 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+
+nnoremap <leader>tf :ToggleTerm direction=float<CR>
+nnoremap <leader>th :ToggleTerm direction=horizontal<CR>
+
 nnoremap <F4> :NvimTreeFindFileToggle<CR>
 nnoremap <F5> :UndotreeToggle<CR>
 nnoremap <F6> :SymbolsOutline<CR>
