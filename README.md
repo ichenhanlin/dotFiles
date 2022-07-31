@@ -1,27 +1,61 @@
 # dotFiles
-个人用配置文件，包括neovim、zsh和tmux等
+个人用配置文件，包括neovim、zsh、alacritty和tmux等
 
-# 安装
-## 自动安装
-自动安装支持macos（需安装homebrew）、ubuntu、centos等
-```
-bash init.sh
-```
-
-## 手动安装
-### 1. 安装依赖
+## 安装
 需要以下依赖：
 
-- neovim >= 0.6.1
+- neovim >= 0.7.2
 - zsh
 - curl
+- ripgrep
+- golang >= 1.7
+- python >= 3.7.2
+### Neovim
+#### **Ubuntu**
+```
+# 安装基础依赖
+sudo apt-get install -y curl ripgrep build-essential
+curl -O -L "https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage"
+# 安装neovim
+sudo chmod +x nvim.appimage
+sudo mv ./nvim.appimage /usr/local/bin/nvim
+# 安装golang1.8
 
-Ps: 
+# 安装python3.7
 
-1. ubuntu和centos自带的包管理工具的neovim版本过低，需要手动下载已经编译好的二进制包，详情见[Neovim](https://github.com/neovim/neovim)。
+# 配置软链接
+mkdir -p ${HOME}/.config
+ln -s ${HOME}/dotFiles/nvim ${HOME}/.config/nvim
+```
 
-### 2. 配置zsh
+#### **Centos**
+```
+# 安装基础依赖
+sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+sudo yum install -y curl ripgrep util-linux-user
+# 安装neovim
+curl -O -L "https://github.com/neovim/neovim/releases/download/v0.7.2/nvim.appimage"
+sudo chmod +x nvim.appimage
+sudo mv ./nvim.appimage /usr/local/bin/nvim
+# 安装golang1.8
 
+# 安装python3.7
+
+# 配置软链接
+mkdir -p ${HOME}/.config
+ln -s ${HOME}/dotFiles/nvim ${HOME}/.config/nvim
+```
+
+#### **MacOs**
+```
+brew install neovim ripgrep curl golang python3 python3-pip
+
+# 配置软链接
+mkdir -p ${HOME}/.config
+ln -s ${HOME}/dotFiles/nvim ${HOME}/.config/nvim
+```
+
+### zsh
 1. 安装[oh My Zsh](https://ohmyz.sh/)
 
 ```
@@ -48,51 +82,13 @@ source \$HOME/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 EOF
 ```
 
-### 3. 配置neovim
-
-链接配置文件，首次打开neovim会自动下载packer.nvim并下载插件。
+### alacritty
 ```
-ln -s {Path to dotFiles}/dotFiles/nvim ${HOME}/.config/nvim
-```
-
-### 4. 配置golang
-因为vim-go插件的缘故，要求golang版本大于等于1.16，然后配置环境变量即可，lsp、代码检查等工具会由vim-go自动下载。
-```
-mkdir -p ${HOME}/workspace/golang
-cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
-export GOPATH=${HOME}/workspace/golang
-export GOBIN=\${GOPATH}/bin
-export PATH=\$PATH:\$GOBIN
-export GO111MODULE=on
-EOF
+mkdir -p ${HOME}/.config
+ln -s ${HOME}/dotFiles/alacritty ${HOME}/.config/alacritty
 ```
 
-### 5. 配置java
-
-java由jdtls提供lsp功能，主要由nvim-jdtls插件连接lsp，因为jdtls要求JavaSE-11，而日常使用项目需要JavaSE-1.8，所以需要安装两个版本的java。
-
-1. 下载jdtls
-```
-sudo mkdir -p $HOME/.local/share/jdtls
-curl -L https://download.eclipse.org/jdtls/milestones/1.9.0/jdt-language-server-1.9.0-202203031534.tar.gz | sudo tar -xz -C ${HOME}/.local/share/jdtls
-```
-2. 配置java
-```
-sudo mkdir /usr/local/java/
-sudo ln -s {Path to jdk8} /usr/local/java/java-8 
-sudo ln -s {Path to jdk11} /usr/local/java/java-11 
-
-cat >> ${ZDOTDIR:-$HOME}/.zshrc<<EOF
-export JAVA_HOME8=/usr/local/java/java-8
-export JAVA_HOME11=/usr/local/java/java-11
-export JAVA_HOME=JAVA_HOME8
-export PATH=\$PATH:\$HOME/.local/share/jdtls/bin
-EOF
-```
-
-### 6. 配置python3
-
-# neovim插件说明
+## neovim插件说明
 
 - 插件管理
 
@@ -161,15 +157,15 @@ EOF
 
 [undotree]()
 
-# neovim快捷键说明
+## neovim快捷键说明
 
-## 普通设置
+### 普通设置
 
 **\<Alt-h/j/k/l\>**: 切换窗口
 
 **:Sw**: 强制保存
 
-## LSP相关
+### LSP相关
 **\<leader-gsh\>**: 显示函数签名
 
 **\<leader-ca\>**: code action
@@ -202,7 +198,7 @@ EOF
 
 **\<leader-lp\>**: locallist上一项
 
-## 补全相关
+### 补全相关
 **\<Ctrl-f/d\>**: 补全提示文档上下移动
 
 **\<Ctrl-space/e\>**: 触发/停止补全
@@ -211,29 +207,11 @@ EOF
 
 **\<Tab\>/\<Shift-Tab\>**: 上下选择补全结果
 
-## Java
-**\<Alt-o\>**: 组织import
 
-**\<leader-ev\>**: 提取变量
-
-**\<leader-ec\>**: 提取常量
-
-**\<leader-em\>**: 提取方法
-
-## Telescope
-**\<leader-ff\>**: 文件搜索
-
-**\<leader-fg\>**: 字符串搜索
-
-**\<leader-fb\>**: 缓冲区搜索
-
-**\<leader-fh\>**: 帮助文档搜索
-
-
-## Undotree相关
+### Undotree相关
 **\<F5\>**: 开关undotree
 
-## Symbols_outline
+### Symbols_outline
 **\<F6\>**: 开启关闭
 
 **\<Esc\>/\<q\>**: 关闭
