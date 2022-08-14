@@ -4,12 +4,15 @@ nnoremap <leader>gsh :lua vim.lsp.buf.signature_help()<CR>
 " nnoremap <leader>grs :lua vim.lsp.buf.references()<CR>
 nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>
 nnoremap <leader>gh :lua vim.lsp.buf.hover()<CR>
-nnoremap <leader>ge :lua vim.diagnostic.open_float()<CR>
+nnoremap <leader>se :lua vim.diagnostic.open_float()<CR>
 
 " Using telescope instead of native
 nnoremap <leader>gd <cmd>lua require('telescope.builtin').lsp_definitions()<CR>
 nnoremap <leader>gi <cmd>lua require('telescope.builtin').lsp_implementations()<CR>
 nnoremap <leader>grs <cmd>lua require('telescope.builtin').lsp_references()<CR>
+nnoremap <leader>ge <cmd>lua require('telescope.builtin').diagnostics({bufnr=0})<CR>
+nnoremap <leader>ne :lua vim.diagnostic.goto_next()<CR>
+nnoremap <leader>pe :lua vim.diagnostic.goto_prev()<CR>
 
 nnoremap <leader>co :lua vim.diagnostic.setqflist()<CR>
 nnoremap <leader>cc :cclose<CR>
