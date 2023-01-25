@@ -1,3 +1,9 @@
+local present, lualine = pcall(require, "lualine")
+
+if not present then
+  return
+end
+
 local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
@@ -17,7 +23,6 @@ local diff = {
     modified = { fg = "#ecbe7b" },
     removed = { fg = "#ec5f67" },
   },
-  cond = hide_in_width
 }
 
 local file_name = {
@@ -68,7 +73,7 @@ local spaces = function()
   return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
-require('lualine').setup {
+lualine.setup {
     option = {
         disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
     },
