@@ -35,6 +35,9 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 
+nmap <leader>o <Plug>OSCYank
+vnoremap <leader>o :OSCYank<CR>
+
 
 nnoremap <leader>tf :ToggleTerm direction=float<CR>
 nnoremap <leader>th :ToggleTerm direction=horizontal<CR>
@@ -47,3 +50,5 @@ augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 100})
 augroup END
+
+let g:oscyank_term = 'default'

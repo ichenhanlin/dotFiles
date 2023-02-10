@@ -24,7 +24,7 @@ set completeopt+=longest,menuone,noinsert,noselect "插入模式中，只插入�
 set wildmenu
 set nostartofline "使用gg、G、C-D等移动操作符时，光标尽可能保持在同一列上
 set signcolumn=yes
-"set colorcolumn=80
+set colorcolumn=120
 try
   "形成配对的字符，可以使用%命令跳转的
   set matchpairs=(:),{:},[:],《:》,〈:〉,［:］,（:）,「:」,『:』,‘:’,“:”,':',":"

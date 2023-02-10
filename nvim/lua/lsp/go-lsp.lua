@@ -19,6 +19,11 @@ settings = {
     },
     staticcheck = true,
     usePlaceholders = true,
+    codelenses = {
+        generate = true,
+        test = true,
+        tidy = true,
+    },
   },
 },
 capabilities = capabilities,

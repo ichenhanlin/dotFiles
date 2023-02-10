@@ -3,6 +3,8 @@
 nnoremap <leader>gsh :lua vim.lsp.buf.signature_help()<CR>
 " nnoremap <leader>grs :lua vim.lsp.buf.references()<CR>
 nnoremap <leader>ca :lua vim.lsp.buf.code_action()<CR>
+nnoremap <leader>cd :lua vim.lsp.codelens.run()<CR>
+nnoremap <leader>cr :lua vim.lsp.codelens.refresh()<CR>
 nnoremap <leader>gh :lua vim.lsp.buf.hover()<CR>
 nnoremap <leader>se :lua vim.diagnostic.open_float()<CR>
 
