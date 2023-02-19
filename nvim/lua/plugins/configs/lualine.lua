@@ -73,6 +73,9 @@ local spaces = function()
   return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
+vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+local git_blame = require('gitblame')
+
 lualine.setup {
     option = {
         disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
@@ -93,5 +96,10 @@ lualine.setup {
         lualine_x = {},
         lualine_y = {},
         lualine_z = {},
-    }
+    },
+    winbar = {
+        lualine_c = {
+            { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+        },
+    },
 }

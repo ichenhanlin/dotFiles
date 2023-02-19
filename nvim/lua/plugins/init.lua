@@ -186,12 +186,6 @@ packer.startup(function(use)
         module = "mason-lspconfig",
     }
 
-    -- Automatically set up your configuration after cloning packer.nvim
-    -- Put this at the end after all plugins
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-
     -- golang
     use {
         "olexsmir/gopher.nvim",
@@ -205,4 +199,21 @@ packer.startup(function(use)
         end,
         run = ":GoInstallDeps",
     }
+
+    -- end golang
+
+    -- git
+    use {
+        "f-person/git-blame.nvim",
+        cmd = {"GitBlameToggle"},
+        module = {"gitblame"},
+    }
+    -- end git
+
+    -- Automatically set up your configuration after cloning packer.nvim
+    -- Put this at the end after all plugins
+    if packer_bootstrap then
+        require('packer').sync()
+    end
+
 end)

@@ -24,6 +24,16 @@ M.general = {
         ["<A-l>"] = { "<C-w>l", "window right" },
         ["<A-j>"] = { "<C-w>j", "window down" },
         ["<A-k>"] = { "<C-w>k", "window up" },
+        ["<leader>s="] = {':exe "resize " . (winheight(0) * 3/2)<CR>', "increase horizental window size"},
+        ["<leader>s-"] = {':exe "resize " . (winheight(0) * 2/3)<CR>', "decrease horizental window size"},
+        ["<leader>v="] = {':exe "vertical resize " . (winwidth(0) * 3/2)<CR>', "increase vertical window size"},
+        ["<leader>v-"] = {':exe "vertical resize " . (winwidth(0) * 2/3)<CR>', "decrease vertical window size"},
+        ["<leader>cn"] = {':cnext<CR>', "next quickfix item"},
+        ["<leader>cp"] = {':cprev<CR>', "previous quickfix item"},
+        ["<leader>cc"] = {':cclose<CR>', "close quickfix windows"},
+        ["<leader>ln"] = {':lnext<CR>', "next loclist item"},
+        ["<leader>lp"] = {':lprev<CR>', "previous loclist item"},
+        ["<leader>lc"] = {':lclose<CR>', "close loclist windows"},
     },
 }
 
