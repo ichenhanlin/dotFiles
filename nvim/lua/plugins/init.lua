@@ -191,4 +191,18 @@ packer.startup(function(use)
     if packer_bootstrap then
         require('packer').sync()
     end
+
+    -- golang
+    use {
+        "olexsmir/gopher.nvim",
+        ft = "go",
+        requires = { -- dependencies
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function ()
+            require("gopher").setup({})
+        end,
+        run = ":GoInstallDeps",
+    }
 end)

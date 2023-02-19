@@ -5,6 +5,7 @@ if not present then
 end
 
 local lspkind = require('lspkind')
+local luasnip = require("luasnip")
 
 -- gray
 vim.cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough guifg=#808080")
@@ -26,7 +27,7 @@ vim.cmd("highlight! link CmpItemKindUnit CmpItemKindKeyword")
 cmp.setup {
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
 
