@@ -76,6 +76,7 @@ end
 lualine.setup {
     option = {
         disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
+        theme = 'gruvbox',
     },
     sections = {
         lualine_a = { 'mode', branch },
@@ -91,6 +92,6 @@ lualine.setup {
         lualine_c = {},
         lualine_x = {},
         lualine_y = {},
-        lualine_z = {'tabs'}
+        lualine_z = {},
     }
 }
