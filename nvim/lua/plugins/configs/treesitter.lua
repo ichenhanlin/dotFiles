@@ -1,11 +1,20 @@
-require'nvim-treesitter.configs'.setup {
+local present, treesitter = pcall(require, "nvim-treesitter.configs")
+
+if not present then
+  return
+end
+
+treesitter.setup {
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
   ensure_installed = {"vim", "go", "lua", "bash", "java", "gomod", "gowork", "json", "python", "yaml", "proto"},
   -- 启用代码高亮功能
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = false
+    additional_vim_regex_highlighting = false,
+  },
+  indent = {
+      enable = true
   },
 }
 -- 开启 Folding
