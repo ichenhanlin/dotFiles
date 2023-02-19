@@ -2,3 +2,15 @@
 NEWLINE=$'\n'
 PROMPT='%{$fg_bold[green]%}[%n@%m]: %{$fg[cyan]%}%/%{$reset_color%} $(git_prompt_info)${NEWLINE}'
 PROMPT+="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )"
+
+alias vim="nvim"
+alias vi="nvim"
+
+export GOPATH=${HOME}/go
+export GOBIN=${GOPATH}/bin
+export PATH="$PATH:$GOBIN"
+export PATH=$PATH:/usr/local/go/bin
+export GO111MODULE=on
+
+source $HOME/.local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
