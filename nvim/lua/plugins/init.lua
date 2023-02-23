@@ -85,7 +85,7 @@ packer.startup(function(use)
 
     use {
         'hrsh7th/nvim-cmp',
-        after = "lspkind-nvim",
+        after = {"lspkind-nvim", "LuaSnip"},
         config = function()
             require "plugins.configs.cmp"
         end
@@ -93,8 +93,7 @@ packer.startup(function(use)
 
     use {
         'L3MON4D3/LuaSnip',
-        wants = "friendly-snippets",
-        after = "nvim-cmp",
+        after = "friendly-snippets",
         config = function()
             require("plugins.configs.luasnip")
         end
@@ -205,10 +204,25 @@ packer.startup(function(use)
     -- git
     use {
         "f-person/git-blame.nvim",
+        opt = true,
         cmd = {"GitBlameToggle"},
         module = {"gitblame"},
     }
     -- end git
+
+    use {
+        'ojroques/nvim-osc52',
+        opt = true,
+        setup = function()
+            require("core.lazy_load").on_file_open "nvim-osc52"
+            require("core.utils").load_mappings "copy"
+        end,
+        config = function()
+            require('osc52').setup {
+                silent = true,  -- Disable message on successful copy
+            }
+        end
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

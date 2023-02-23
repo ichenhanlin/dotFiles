@@ -4,6 +4,7 @@ if not present then
   return
 end
 
+require 'nvim-treesitter.install'.compilers = { "clang" }
 treesitter.setup {
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言

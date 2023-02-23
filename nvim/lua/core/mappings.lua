@@ -185,4 +185,34 @@ M.lsp = {
 
   },
 }
+
+M.copy = {
+    plugin = true,
+    n = {
+        ["<leader>y"] = {
+            function()
+                return require('osc52').copy_operator()
+            end,
+            "copy the given text to the clipboard",
+            opts = {
+                expr = true,
+            }
+        },
+        ["<leader>yy"] = {
+            "<leader>y_",
+            "copy the current line to the clipboard",
+            opts = {
+                remap = true,
+            },
+        },
+    },
+    x = {
+        ["<leader>y"] = {
+            function()
+                require('osc52').copy_visual()
+            end,
+            "copy the current selection to the clipboard"
+        },
+    },
+}
 return M
