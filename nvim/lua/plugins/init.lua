@@ -216,17 +216,6 @@ packer.startup(function(use)
         cmd = {"GitBlameToggle"},
         module = {"gitblame"},
     }
-
-    use {
-        'TimUntersberger/neogit',
-        opt = true,
-        cmd = {"Neogit"},
-        setup = function()
-            require("core.utils").load_mappings "git"
-        end,
-        requires = 'nvim-lua/plenary.nvim',
-    }
-
     -- end git
 
     use {

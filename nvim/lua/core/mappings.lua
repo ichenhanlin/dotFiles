@@ -217,10 +217,4 @@ M.copy = {
     },
 }
 
-M.git =  {
-    plugin = true,
-    n = {
-        ["<F7>"] = {":Neogit <CR>", "open neogit"},
-    },
-}
 return M
