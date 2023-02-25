@@ -70,6 +70,7 @@ M.telescope = {
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
         ["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "find references" },
+        ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "find git status" },
     }
 }
 
@@ -213,6 +214,13 @@ M.copy = {
             end,
             "copy the current selection to the clipboard"
         },
+    },
+}
+
+M.git =  {
+    plugin = true,
+    n = {
+        ["<F7>"] = {":Neogit <CR>", "open neogit"},
     },
 }
 return M

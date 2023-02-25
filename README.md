@@ -227,3 +227,4 @@ ln -s ${HOME}/dotFiles/alacritty ${HOME}/.config/alacritty
 **\<r\>**: 重命名
 
 **\<a\>**: code action
+

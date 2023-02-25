@@ -31,7 +31,15 @@ packer.startup(function(use)
 
     use { 'wbthomason/packer.nvim' }
 
-    use { 'morhetz/gruvbox' }
+    use { 
+        'morhetz/gruvbox',
+        config = function ()
+            vim.api.nvim_set_hl(0, 'DiffAdd', { link = 'GruvboxGreenSign'})
+            vim.api.nvim_set_hl(0, 'DiffDelete', { link = 'GruvboxRedSign'})
+            vim.api.nvim_set_hl(0, 'DiffChange', { link = 'GruvboxAquaSign'})
+            vim.api.nvim_set_hl(0, 'DiffText', { link = 'GruvboxYellowSign'})
+        end
+    }
 
     use {
         'kyazdani42/nvim-web-devicons',
@@ -208,6 +216,17 @@ packer.startup(function(use)
         cmd = {"GitBlameToggle"},
         module = {"gitblame"},
     }
+
+    use {
+        'TimUntersberger/neogit',
+        opt = true,
+        cmd = {"Neogit"},
+        setup = function()
+            require("core.utils").load_mappings "git"
+        end,
+        requires = 'nvim-lua/plenary.nvim',
+    }
+
     -- end git
 
     use {
@@ -222,6 +241,21 @@ packer.startup(function(use)
                 silent = true,  -- Disable message on successful copy
             }
         end
+    }
+
+    -- input and select ui
+    use {
+        'stevearc/dressing.nvim',
+        config = function()
+            require "plugins.configs.dressing"
+        end,
+    }
+
+    -- quickfix
+    use {
+        'kevinhwang91/nvim-bqf', 
+        opt = true,
+        ft = 'qf',
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
