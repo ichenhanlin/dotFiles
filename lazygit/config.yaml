@@ -1,0 +1,5 @@
+gui:
+  language: auto
+os:
+  editCommand: "nvim"
+quitOnTopLevelReturn: true

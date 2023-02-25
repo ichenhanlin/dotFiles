@@ -24,6 +24,7 @@ M.general = {
         ["<A-l>"] = { "<C-w>l", "window right" },
         ["<A-j>"] = { "<C-w>j", "window down" },
         ["<A-k>"] = { "<C-w>k", "window up" },
+
         ["<leader>s="] = {':exe "resize " . (winheight(0) * 5/4)<CR>', "increase horizental window size"},
         ["<leader>s-"] = {':exe "resize " . (winheight(0) * 3/4)<CR>', "decrease horizental window size"},
         ["<leader>v="] = {':exe "vertical resize " . (winwidth(0) * 5/4)<CR>', "increase vertical window size"},
@@ -34,13 +35,21 @@ M.general = {
         ["<leader>ln"] = {':lnext<CR>', "next loclist item"},
         ["<leader>lp"] = {':lprev<CR>', "previous loclist item"},
         ["<leader>lc"] = {':lclose<CR>', "close loclist windows"},
+
+        ["<F5>"] = {
+            function ()
+                vim.cmd("so $MYVIMRC")
+                vim.cmd("LspRestart")
+            end,
+            "reload vimrc and restart lsp"
+        }
     },
 }
 
 M.nvimtree = {
     plugin = true,
     n = {
-        ["<F4>"] = {"<cmd> NvimTreeToggle <CR>", "toggle nvimtree"},
+        ["<F1>"] = {"<cmd> NvimTreeToggle <CR>", "toggle nvimtree"},
         ["<leader>e"] = { "<cmd> NvimTreeFocus <CR>", "focus nvimtree" },
     },
 }
@@ -48,14 +57,14 @@ M.nvimtree = {
 M.undotree = {
     plugin = true,
     n = {
-        ["<F5>"] = {":UndotreeToggle <CR>", "toggle undo tree"},
+        ["<F2>"] = {":UndotreeToggle <CR>", "toggle undo tree"},
     },
 }
 
 M.symbols = {
     plugin = true,
     n = {
-        ["<F6>"] = {"<cmd> SymbolsOutline <CR>", "toggle synbols outline"},
+        ["<F3>"] = {"<cmd> SymbolsOutline <CR>", "toggle synbols outline"},
     },
 }
 
