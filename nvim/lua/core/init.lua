@@ -28,15 +28,15 @@ vim.opt.display="lastline"
 vim.opt.completeopt:append({"longest","menuone","noinsert","noselect"})
 vim.opt.updatetime=50
 
+-- load plugins
+require("plugins")
+
 -- color setting
 require("core.color")
 
 -- key mapping setting
 vim.g.mapleader = ' '
 require("core.utils").load_mappings()
-
--- load plugins
-require("plugins")
 
 -- commands
 require("core.commands")
