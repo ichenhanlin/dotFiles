@@ -247,6 +247,17 @@ packer.startup(function(use)
         ft = 'qf',
     }
 
+    use {
+        'mhartington/formatter.nvim',
+        opt = true,
+        setup = function()
+            require("core.lazy_load").on_file_open "formatter.nvim"
+        end,
+        config = function()
+            require "plugins.configs.formatter"
+        end
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

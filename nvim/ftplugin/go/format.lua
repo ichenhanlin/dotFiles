@@ -28,11 +28,11 @@ function goimports(timeout_ms)
     end
 end
 
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*.go',
-  group = vim.api.nvim_create_augroup("go_format", {clear = true}),
-  callback = function()
-        goimports(1000)
-        vim.lsp.buf.format()
-  end
-})
+-- vim.api.nvim_create_autocmd('BufWritePre', {
+--   pattern = '*.go',
+--   group = vim.api.nvim_create_augroup("go_format", {clear = true}),
+--   callback = function()
+--         goimports(1000)
+--         vim.lsp.buf.format()
+--   end
+-- })
