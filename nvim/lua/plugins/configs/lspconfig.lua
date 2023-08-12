@@ -1,73 +1,29 @@
-local present, mason = pcall(require, "mason")
-
-if not present then
-    return
-end
-
-mason.setup({
-    -- ensure_installed = { "lua-language-server", "gopls", "pylsp" }, -- not an option from mason.nvim
-
-    PATH = "skip",
-
-    ui = {
-        icons = {
-            package_pending = " ",
-            package_installed = " ",
-            package_uninstalled = " ﮊ",
-        },
-
-        keymaps = {
-            toggle_server_expand = "<CR>",
-            install_server = "i",
-            update_server = "u",
-            check_server_version = "c",
-            update_all_servers = "U",
-            check_outdated_servers = "C",
-            uninstall_server = "X",
-            cancel_installation = "<C-c>",
-        },
-    },
-
-    max_concurrent_installers = 10,
-})
-
-local present, masonLspConfig = pcall(require, "mason-lspconfig")
-
-if not present then
-    return
-end
-
-
-masonLspConfig.setup({
-    automatic_installation = true,
-})
-
 local present, lspconfig = pcall(require, "lspconfig")
 
 if not present then
     return
 end
 
-vim.diagnostic.config(
-    {
-        -- underline = {
-        --     severity = vim.diagnostic.severity.ERROR
-        -- },
-        -- 诊断的虚拟文本
-        virtual_text = {
-            -- 显示的前缀，可选项：'●', '▎', 'x'
-            -- 默认是一个小方块，不是很好看，所以这里改了
-            prefix = "●",
-            -- 是否总是显示前缀？是的
-            source = "always",
-            -- severity = vim.diagnostic.severity.ERROR
-        },
-        float = {
-            -- 是否显示诊断来源？是的
-            source = "always"
-        },
-    }
-)
+-- vim.diagnostic.config(
+--     {
+--         -- underline = {
+--         --     severity = vim.diagnostic.severity.ERROR
+--         -- },
+--         -- 诊断的虚拟文本
+--         virtual_text = {
+--             -- 显示的前缀，可选项：'●', '▎', 'x'
+--             -- 默认是一个小方块，不是很好看，所以这里改了
+--             prefix = "●",
+--             -- 是否总是显示前缀？是的
+--             source = "always",
+--             -- severity = vim.diagnostic.severity.ERROR
+--         },
+--         float = {
+--             -- 是否显示诊断来源？是的
+--             source = "always"
+--         },
+--     }
+-- )
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -104,30 +60,6 @@ lspconfig.gopls.setup {
     capabilities = capabilities,
 }
 
--- Python
-lspconfig.pylsp.setup {
-    capabilities = capabilities,
-}
-
--- Lua
-lspconfig.lua_ls.setup {
-  settings = {
-    Lua = {
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-        },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-      },
-    },
-  },
-}
-
 -- codelens
 function check_capabilities(feature, bufnr)
   local clients = vim.lsp.get_active_clients({ buffer = bufnr or vim.api.nvim_get_current_buf() })
@@ -152,11 +84,11 @@ function refresh_codelens()
     vim.lsp.codelens.refresh()
 end
 
-local codelens_group = vim.api.nvim_create_augroup("display_codelens", {clear = true})
-vim.api.nvim_create_autocmd({"BufEnter", "CursorHold", "InsertLeave"}, {
-    group = codelens_group,
-    desc = "display codelens for current buffer",
-    callback=function ()
-        refresh_codelens()
-    end,
-})
+-- local codelens_group = vim.api.nvim_create_augroup("display_codelens", {clear = true})
+-- vim.api.nvim_create_autocmd({"BufEnter", "CursorHold", "InsertLeave"}, {
+--     group = codelens_group,
+--     desc = "display codelens for current buffer",
+--     callback=function ()
+--         refresh_codelens()
+--     end,
+-- })

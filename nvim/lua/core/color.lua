@@ -8,6 +8,11 @@ vim.api.nvim_set_hl(0, 'LspCodeLensText', { link = 'DiagnosticInfo', default = t
 vim.api.nvim_set_hl(0, 'LspCodeLensSign', { link = 'DiagnosticInfo', default = true })
 vim.api.nvim_set_hl(0, 'LspCodeLensSeparator', { link = 'Boolean', default = true })
 
+-- vim.api.nvim_set_hl(0, 'DiffAdd', { link = 'GruvboxGreenSign'})
+-- vim.api.nvim_set_hl(0, 'DiffDelete', { link = 'GruvboxRedSign'})
+-- vim.api.nvim_set_hl(0, 'DiffChange', { link = 'GruvboxAquaSign'})
+-- vim.api.nvim_set_hl(0, 'DiffText', { link = 'GruvboxYellowSign'})
+
 local yank = vim.api.nvim_create_augroup("highlight_yank", {clear = true})
 vim.api.nvim_create_autocmd( "TextYankPost", {
     pattern = '*',

@@ -35,14 +35,6 @@ M.general = {
         ["<leader>ln"] = {':lnext<CR>', "next loclist item"},
         ["<leader>lp"] = {':lprev<CR>', "previous loclist item"},
         ["<leader>lc"] = {':lclose<CR>', "close loclist windows"},
-
-        ["<F5>"] = {
-            function ()
-                vim.cmd("so $MYVIMRC")
-                vim.cmd("LspRestart")
-            end,
-            "reload vimrc and restart lsp"
-        }
     },
 }
 
@@ -78,122 +70,100 @@ M.telescope = {
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
-        ["<leader>fr"] = { "<cmd> Telescope lsp_references <CR>", "find references" },
-        ["<leader>gs"] = { "<cmd> Telescope git_status <CR>", "find git status" },
+        ["<leader>gr"] = { "<cmd> Telescope lsp_references <CR>", "find references" },
     }
 }
 
 M.lsp = {
     plugin = true,
-      -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
+    -- See `<cmd> :help vim.lsp.*` for documentation on any of the below functions
 
-  n = {
-    ["<leader>gD"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
-      "lsp declaration",
-    },
+    n = {
+        ["<leader>gD"] = {
+            function()
+                vim.lsp.buf.declaration()
+            end,
+            "lsp declaration",
+        },
 
-    ["<leader>gd"] = {
-      function()
-        vim.lsp.buf.definition()
-      end,
-      "lsp definition",
-    },
-        
-    ["<leader>rn"] = {
-      function()
-        vim.lsp.buf.rename()
-      end,
-      "lsp rename",
-    },
+        ["<leader>gd"] = {
+            function()
+                vim.lsp.buf.definition()
+            end,
+            "lsp definition",
+        },
 
-    ["<leader>K"] = {
-      function()
-        vim.lsp.buf.hover()
-      end,
-      "lsp hover",
-    },
+        ["<leader>rn"] = {
+            function()
+                vim.lsp.buf.rename()
+            end,
+            "lsp rename",
+        },
 
-    ["<leader>gi"] = {
-      function()
-        vim.lsp.buf.implementation()
-      end,
-      "lsp implementation",
-    },
+        ["<leader>K"] = {
+            function()
+                vim.lsp.buf.hover()
+            end,
+            "lsp hover",
+        },
 
-    ["<leader>ls"] = {
-      function()
-        vim.lsp.buf.signature_help()
-      end,
-      "lsp signature_help",
-    },
+        ["<leader>gi"] = {
+            function()
+                vim.lsp.buf.implementation()
+            end,
+            "lsp implementation",
+        },
 
-    ["<leader>D"] = {
-      function()
-        vim.lsp.buf.type_definition()
-      end,
-      "lsp definition type",
-    },
+        ["<leader>ls"] = {
+            function()
+                vim.lsp.buf.signature_help()
+            end,
+            "lsp signature_help",
+        },
 
-    ["<leader>ca"] = {
-      function()
-        vim.lsp.buf.code_action()
-      end,
-      "lsp code_action",
-    },
+        ["<leader>D"] = {
+            function()
+                vim.lsp.buf.type_definition()
+            end,
+            "lsp definition type",
+        },
 
-    ["<leader>cl"] = {
-      function()
-        vim.lsp.codelens.run()
-      end,
-      "lsp codelens",
-    },
+        ["<leader>ca"] = {
+            function()
+                vim.lsp.buf.code_action()
+            end,
+            "lsp code_action",
+        },
 
-    ["<leader>gr"] = {
-      function()
-        vim.lsp.buf.references()
-      end,
-      "lsp references",
-    },
+        ["<leader>la"] = {
+            function()
+                vim.lsp.codelens.run()
+            end,
+            "lsp codelens",
+        },
 
-    ["<leader>f"] = {
-      function()
-        vim.diagnostic.open_float()
-      end,
-      "floating diagnostic",
-    },
+        ["<leader>f"] = {
+            function()
+                vim.diagnostic.open_float()
+            end,
+            "floating diagnostic",
+        },
 
-    ["<leader>ep"] = {
-      function()
-        vim.diagnostic.goto_prev()
-      end,
-      "goto prev",
-    },
+        ["[d"] = {
+            function()
+                vim.diagnostic.goto_prev()
+            end,
+            "goto prev",
+        },
 
-    ["<leader>en"] = {
-      function()
-        vim.diagnostic.goto_next()
-      end,
-      "goto_next",
-    },
+        ["]d"] = {
+            function()
+                vim.diagnostic.goto_next()
+            end,
+            "goto_next",
+        },
 
-    ["<leader>q"] = {
-      function()
-        vim.diagnostic.setloclist()
-      end,
-      "diagnostic setloclist",
     },
-
-    ["<leader>fm"] = {
-      function()
-        vim.lsp.buf.format { async = true }
-      end,
-      "lsp formatting",
-    },
-
-  },
 }
 
 M.copy = {

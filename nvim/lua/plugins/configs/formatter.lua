@@ -11,10 +11,10 @@ formatter.setup {
   log_level = vim.log.levels.WARN,
   -- All formatter configurations are opt-in
   filetype = {
-    go = {
-      require("formatter.filetypes.go").gofmt,
-      require("formatter.filetypes.go").goimports,
-    },
+    -- go = {
+    --   require("formatter.filetypes.go").gofmt,
+    --   require("formatter.filetypes.go").goimports,
+    -- },
 
     -- Use the special "*" filetype for defining formatter configurations on
     -- any filetype
