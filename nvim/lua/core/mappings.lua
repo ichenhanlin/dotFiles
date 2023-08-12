@@ -196,4 +196,18 @@ M.copy = {
     },
 }
 
+M.hop = {
+    plugin = true,
+    n = {
+        ["<leader>hw"] = {
+            ':HopWord <CR>',
+            "HopWord",
+        },
+        ["<leader>hl"] = {
+            ':HopLine <CR>',
+            "HopLine",
+        },
+    },
+}
+
 return M
