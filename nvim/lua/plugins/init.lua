@@ -2,7 +2,20 @@ require("lazy").setup({
     "lewis6991/impatient.nvim",
     'nvim-lua/plenary.nvim',
 
-    { "ellisonleao/gruvbox.nvim", priority = 1000 },
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = function()
+            require("gruvbox").setup({
+                invert_selection = true,
+                transparent_mode = true,
+                overrides = {
+                    TelescopeSelection = {link = "Visual"},
+                    TelescopeSelectionCaret = { link = 'TelescopeSelection', default = true },
+                }
+            })
+        end
+    },
 
     {
         'kyazdani42/nvim-web-devicons',

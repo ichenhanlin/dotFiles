@@ -1,5 +1,5 @@
 gui:
   language: en
 os:
-  editCommand: "nvim"
+  edit: "nvim"
 quitOnTopLevelReturn: true
