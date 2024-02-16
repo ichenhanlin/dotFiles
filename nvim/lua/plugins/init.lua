@@ -44,7 +44,25 @@ require("lazy").setup({
     },
 
     {
+        "williamboman/mason.nvim",
+    },
+
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+        },
+        config = function()
+            require("plugins.configs.mason")
+        end,
+    },
+
+    {
         'neovim/nvim-lspconfig',
+        dependencies = {
+            "williamboman/mason-lspconfig.nvim",
+            "williamboman/mason.nvim",
+        },
         init = function()
             require("core.utils").load_mappings "lsp"
         end,
@@ -53,6 +71,12 @@ require("lazy").setup({
         end,
     },
 
+    {
+        "nvimtools/none-ls.nvim",
+        config = function()
+            require "plugins.configs.none_ls"
+        end,
+    },
 
     {
         'hrsh7th/nvim-cmp',
@@ -163,19 +187,19 @@ require("lazy").setup({
         event = "VeryLazy",
     },
 
-    {
-        "ray-x/go.nvim",
-        dependencies = {
-            "neovim/nvim-lspconfig",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = function()
-            require "plugins.configs.go"
-        end,
-        event = {"CmdlineEnter"},
-        ft = {"go", 'gomod'},
-        build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
-    },
+    -- {
+    --     "ray-x/go.nvim",
+    --     dependencies = {
+    --         "neovim/nvim-lspconfig",
+    --         "nvim-treesitter/nvim-treesitter",
+    --     },
+    --     config = function()
+    --         require "plugins.configs.go"
+    --     end,
+    --     event = {"CmdlineEnter"},
+    --     ft = {"go", 'gomod'},
+    --     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+    -- },
 
     {
         'code-biscuits/nvim-biscuits',
