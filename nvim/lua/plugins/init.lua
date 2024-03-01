@@ -39,6 +39,11 @@ require("lazy").setup({
         "j-hui/fidget.nvim",
         opts = {
             -- options
+            progress = {
+                ignore = {
+                    "null-ls",
+                }
+            },
         },
     },
 
@@ -54,6 +59,17 @@ require("lazy").setup({
 
     {
         "williamboman/mason.nvim",
+    },
+
+    {
+        'kosayoda/nvim-lightbulb',
+        config = function()
+            require("nvim-lightbulb").setup({
+                autocmd = {
+                    enabled = true,
+                },
+            })
+        end,
     },
 
     {
@@ -109,6 +125,7 @@ require("lazy").setup({
             'hrsh7th/cmp-cmdline',
             'onsails/lspkind-nvim',
             'L3MON4D3/LuaSnip',
+            "lukas-reineke/cmp-under-comparator",
         }
     },
 

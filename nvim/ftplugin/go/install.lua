@@ -1,5 +1,4 @@
 local urls = {
-  gopls = "golang.org/x/tools/gopls@latest",
   gofumpt = " mvdan.cc/gofumpt@latest",
   goimports_reviser = "github.com/incu6us/goimports-reviser/v3@latest",
   golines = "github.com/segmentio/golines@v0.9.0",
