@@ -164,6 +164,14 @@ M.lsp = {
         },
 
     },
+    x = {
+        ["<leader>ca"] = {
+            function()
+                vim.lsp.buf.code_action()
+            end,
+            "lsp code_action",
+        },
+    },
 }
 
 M.copy = {

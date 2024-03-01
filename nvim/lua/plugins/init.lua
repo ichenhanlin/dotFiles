@@ -34,6 +34,15 @@ require("lazy").setup({
         },
     },
 
+
+    {
+        "j-hui/fidget.nvim",
+        opts = {
+            -- options
+        },
+    },
+
+
     {
         'lukas-reineke/indent-blankline.nvim',
         config = function()
@@ -76,6 +85,13 @@ require("lazy").setup({
         config = function()
             require "plugins.configs.none_ls"
         end,
+    },
+    {
+        "ThePrimeagen/refactoring.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
     },
 
     {
@@ -200,6 +216,17 @@ require("lazy").setup({
     --     ft = {"go", 'gomod'},
     --     build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
     -- },
+
+    {
+        "olexsmir/gopher.nvim",
+        dependencies = { -- dependencies
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function()
+            require('gopher').setup({})
+        end,
+    },
 
     {
         'code-biscuits/nvim-biscuits',
