@@ -1,5 +1,5 @@
 local urls = {
-  gofumpt = " mvdan.cc/gofumpt@latest",
+  gofumpt = "mvdan.cc/gofumpt@latest",
   goimports_reviser = "github.com/incu6us/goimports-reviser/v3@latest",
   golines = "github.com/segmentio/golines@v0.9.0",
 }
@@ -24,6 +24,10 @@ local function install(pkg)
   }):start()
 end
 
-for pkg, _ in pairs(urls) do
-    install(pkg)
+vim.api.nvim_create_user_command("NonelsInstall", "lua installDependecy()", {nargs=0})
+
+function installDependecy()
+    for pkg, _ in pairs(urls) do
+        install(pkg)
+    end
 end
