@@ -44,6 +44,11 @@ require("lazy").setup({
                     "null-ls",
                 }
             },
+            notification = {
+                window = {
+                    winblend = 0,
+                },
+            },
         },
     },
 
