@@ -6,8 +6,10 @@ null_ls.setup({
     sources = {
         null_ls.builtins.formatting.gofumpt,
         null_ls.builtins.formatting.goimports,
-        null_ls.builtins.formatting.goimports_reviser,
-        null_ls.builtins.formatting.golines,
+        -- null_ls.builtins.formatting.goimports_reviser,
+        null_ls.builtins.formatting.golines.with({
+            extra_args = {"-m", "120"},
+        }),
         null_ls.builtins.code_actions.gomodifytags,
         null_ls.builtins.code_actions.refactoring,
     },
