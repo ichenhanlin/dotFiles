@@ -26,10 +26,10 @@ formatter.setup {
   }
 }
 
-vim.api.nvim_create_autocmd({"BufWritePost"}, {
-    group = vim.api.nvim_create_augroup("FormatAutogroup", {clear=true}),
-    desc = "format after save",
-    callback=function ()
-        vim.cmd("FormatWrite")
-    end,
-})
+-- vim.api.nvim_create_autocmd({"BufWritePost"}, {
+--     group = vim.api.nvim_create_augroup("FormatAutogroup", {clear=true}),
+--     desc = "format after save",
+--     callback=function ()
+--         vim.cmd("FormatWrite")
+--     end,
+-- })

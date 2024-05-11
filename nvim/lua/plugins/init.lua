@@ -67,23 +67,19 @@ require("lazy").setup({
     },
 
     {
-        'kosayoda/nvim-lightbulb',
-        config = function()
-            require("nvim-lightbulb").setup({
-                autocmd = {
-                    enabled = true,
-                },
-            })
-        end,
-    },
-
-    {
         "williamboman/mason-lspconfig.nvim",
         dependencies = {
             "williamboman/mason.nvim",
         },
         config = function()
             require("plugins.configs.mason")
+        end,
+    },
+
+    {
+        'zapling/mason-conform.nvim',
+        config = function()
+            require("mason-conform").setup()
         end,
     },
 
@@ -102,18 +98,26 @@ require("lazy").setup({
     },
 
     {
-        "nvimtools/none-ls.nvim",
+        'stevearc/conform.nvim',
         config = function()
-            require "plugins.configs.none_ls"
+            require "plugins.configs.conform"
         end,
     },
-    {
-        "ThePrimeagen/refactoring.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-    },
+
+    -- {
+    --     "nvimtools/none-ls.nvim",
+    --     config = function()
+    --         require "plugins.configs.none_ls"
+    --     end,
+    -- },
+
+    -- {
+    --     "ThePrimeagen/refactoring.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-treesitter/nvim-treesitter",
+    --     },
+    -- },
 
     {
         'hrsh7th/nvim-cmp',
@@ -213,12 +217,12 @@ require("lazy").setup({
         end
     },
 
-    {
-        'mhartington/formatter.nvim',
-        config = function()
-            require "plugins.configs.formatter"
-        end
-    },
+    -- {
+    --     'mhartington/formatter.nvim',
+    --     config = function()
+    --         require "plugins.configs.formatter"
+    --     end
+    -- },
 
     {
         "RRethy/vim-illuminate",
