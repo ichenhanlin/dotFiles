@@ -218,4 +218,46 @@ M.hop = {
     },
 }
 
+M.dap = {
+    plugin = true,
+    n = {
+        ["<F5>"] = {
+            function()
+                require('dap').continue()
+            end,
+            "continue debug"
+        },
+        ["<F10>"] = {
+            function()
+                require('dap').step_over()
+            end,
+            "step over debug"
+        },
+        ["<F11>"] = {
+            function()
+                require('dap').step_into()
+            end,
+            "step into debug"
+        },
+        ["<F12>"] = {
+            function()
+                require('dap').step_out()
+            end,
+            "step out debug"
+        },
+        ["<leader>b"] = {
+            function()
+                require('dap').toggle_breakpoint()
+            end,
+            "toggle breakpoint"
+        },
+        ["<leader>td"] = {
+            function()
+                require('dap-go').debug_test()
+            end,
+            "debug test"
+        },
+    },
+}
+
 return M

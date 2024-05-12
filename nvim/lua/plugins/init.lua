@@ -84,6 +84,36 @@ require("lazy").setup({
     },
 
     {
+        'jay-babu/mason-nvim-dap.nvim',
+        config = function()
+            require("mason-nvim-dap").setup()
+        end,
+    },
+
+    {
+        'mfussenegger/nvim-dap',
+        config = function()
+            require("plugins.configs.dap")
+        end,
+        init = function()
+            require("core.utils").load_mappings "dap"
+        end,
+    },
+
+    {
+        'leoluz/nvim-dap-go',
+        ft = "go",
+    },
+
+    { 
+        "rcarriga/nvim-dap-ui", 
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "mfussenegger/nvim-dap",
+        },
+    },
+
+    {
         'neovim/nvim-lspconfig',
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
