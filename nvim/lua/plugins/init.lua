@@ -196,6 +196,7 @@ require("lazy").setup({
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-fzf-native.nvim',
+            "Snikimonkd/telescope-git-conflicts.nvim",
         },
     },
 

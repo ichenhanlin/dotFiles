@@ -71,6 +71,7 @@ M.telescope = {
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>tk"] = { "<cmd> Telescope keymaps <CR>", "show keys" },
         ["<leader>gr"] = { "<cmd> Telescope lsp_references <CR>", "find references" },
+        ["<leader>fc"] = { "<cmd> Telescope conflicts <CR>", "find git conflicts" },
     }
 }
 
