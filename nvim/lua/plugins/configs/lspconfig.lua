@@ -37,6 +37,7 @@ lspconfig.gopls.setup {
     cmd = {"gopls", "serve"},
     settings = {
         gopls = {
+            gofumpt = true,
             experimentalPostfixCompletions = true,
             analyses = {
                 unusedparams = true,
