@@ -1,6 +1,6 @@
 require("conform").setup({
     formatters_by_ft = {
-        go = {"golines"},
+        go = {},
         pb = {"buf"},
     },
     format_on_save = {

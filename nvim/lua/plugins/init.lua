@@ -285,18 +285,18 @@ require("lazy").setup({
         end,
     },
 
-    {
-        'code-biscuits/nvim-biscuits',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter',
-        },
-        event = "VeryLazy",
-        config = function()
-            require('nvim-biscuits').setup({
-                cursor_line_only = true,
-            })
-        end,
-    },
+    -- {
+    --     'code-biscuits/nvim-biscuits',
+    --     dependencies = {
+    --         'nvim-treesitter/nvim-treesitter',
+    --     },
+    --     event = "VeryLazy",
+    --     config = function()
+    --         require('nvim-biscuits').setup({
+    --             cursor_line_only = true,
+    --         })
+    --     end,
+    -- },
 
     {
         "xiyaowong/virtcolumn.nvim",
@@ -322,4 +322,12 @@ require("lazy").setup({
         end,
     },
 
+    { 
+        'kosayoda/nvim-lightbulb', 
+        config = function()
+            require("nvim-lightbulb").setup({
+                autocmd = { enabled = true }
+            })
+        end,
+    },
 })
