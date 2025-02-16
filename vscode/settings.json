@@ -1,0 +1,19 @@
+{
+    "workbench.colorTheme": "Gruvbox Dark Hard",
+    // neovim 独立运行
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    // 使用远程neovim
+    "remote.extensionKind": {
+        "asvetliakov.vscode-neovim": [
+            "workspace"
+        ]
+    },
+    "editor.lineNumbers": "relative",
+    "editor.minimap.enabled": false,
+    "find-it-faster.general.useTerminalInEditor": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.formatOnSave": true,
+    "diffEditor.codeLens": true,
+}

@@ -1,0 +1,14 @@
+// Place your key bindings in this file to override the defaults
+[
+    // file explore
+    {
+        "key": "F1",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "!sideBarVisible"
+    },
+    {
+        "key": "F1",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "sideBarVisible && (explorerViewletFocus || editorFocus)"
+    },
+]
