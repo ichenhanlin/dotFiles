@@ -14,7 +14,6 @@ else
 				},
 				opts = {
 					ensure_installed = { "delve" },
-					handlers = {},
 				},
 			},
 			{
