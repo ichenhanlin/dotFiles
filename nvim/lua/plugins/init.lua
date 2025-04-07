@@ -55,11 +55,10 @@ require("lazy").setup({
 
     {
         'lukas-reineke/indent-blankline.nvim',
-        config = function()
-            require("indent_blankline").setup {
-                blankline_disable_with_nolist = false,
-            }
-        end
+        main = "ibl",
+        ---@module "ibl"
+        ---@type ibl.config
+        opts = {},
     },
 
     {
@@ -326,6 +325,8 @@ require("lazy").setup({
         'kosayoda/nvim-lightbulb', 
         config = function()
             require("nvim-lightbulb").setup({
+                sign = { enabled = false },
+                virtual_text = { enabled = true},
                 autocmd = { enabled = true }
             })
         end,
